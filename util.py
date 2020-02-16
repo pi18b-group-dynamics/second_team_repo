@@ -5,15 +5,6 @@ conn = sqlite3.connect('Chinook_Sqlite.sqlite')     # подключение к 
 cursor = conn.cursor()
 
 
-def add(first_name, second_name, third_name, series, number_, sex, whos_give, date_of_give):
-    cursor.execute('INSERT INTO passports (first_name, last_name, patronymic, series, '
-                   'number_, sex, whos_give, date_of_give) VALUES '
-                   '("{}", "{}", "{}", "{}", {}, "{}", "{}", "{}")'.format
-                   (first_name, second_name, third_name, series, number_, sex, whos_give, date_of_give))
-    conn.commit()
-    conn.close()
-
-
 def check_all(first_name, second_name, third_name, series, number_, sex, whos_give, date_of_give):
     if any(map(str.isdigit, first_name)):
         return "Введите нормальное ИМЯ"
@@ -29,6 +20,12 @@ def check_all(first_name, second_name, third_name, series, number_, sex, whos_gi
         return "Введите нормальное ИЗДАНИЕ"
     if any(map(str.isalpha, date_of_give)):
         return "Введите нормальный ДАТУ"
+    cursor.execute('INSERT INTO passports (first_name, last_name, patronymic, series, '
+                   'number_, sex, whos_give, date_of_give) VALUES '
+                   '("{}", "{}", "{}", "{}", {}, "{}", "{}", "{}")'.format
+                   (first_name, second_name, third_name, series, number_, sex, whos_give, date_of_give))
+    conn.commit()
+    conn.close()
 
 
-print(check_all('qwe', 'Фамилия', 'Отчество', 'Серия', 123, 'Пол', 'Кто выдал', '25.01.2020'))
+print(check_all('Урод', 'Фамилия', 'Отчество', 'Серия', 'asd', 'Пол', 'Кто выдал', '25.01.2020'))
