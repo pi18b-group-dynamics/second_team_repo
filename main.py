@@ -1,3 +1,5 @@
+from kivy import Config
+Config.set('graphics', 'width', 1500)
 from kivy.app import App
 import util
 from kivy.uix.boxlayout import BoxLayout
@@ -7,28 +9,39 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.widget import Widget
 
 
+
 class MyApp(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.main_layout = BoxLayout(orientation='horizontal')  # создаем главный макет, в котором будут макеты поиска и остальные
+        self.main_layout = BoxLayout(orientation='horizontal',)  # создаем главный макет, в котором будут макеты поиска и остальные
+        self.list_of_data = {'Введите фамилию': 'last_name',    # словарь с данными кнопошек
+                             'Введите имя': 'first_name',
+                             'Введите отчество': 'patronymic',
+                             'Серия': 'series',
+                             'Номер': 'number_', 'Пол': 'sex',
+                             'Кто выдал': 'whos_give',
+                             'Дата выдачи': 'date_of_give',
+                             'Фотография': 'photo'}
 
     def build(self):
 
         record_layout = BoxLayout(orientation='vertical',
-                                  id='record')
-        find_area = BoxLayout(orientation='vertical')
-        watch_area = BoxLayout(orientation='vertical')
-
-        list_of_data = {'Введите фамилию': 'last_name', 'Введите имя': 'first_name', 'Введите отчество': 'patronymic', 'Серия': 'series', \
-                       'Номер': 'number_', 'Пол': 'sex', 'Кто выдал': 'whos_give', 'Дата выдачи': 'date_of_give', 'Фотография': 'photo'}
+                                  id='record',
+                                  size_hint_x=.3)
+        find_area = GridLayout(cols=9,
+                               id="find",
+                               )
+        watch_area = BoxLayout(orientation='vertical',
+                               size_hint_x=.3)
 
         record_layout.add_widget(TextInput(text='Введите данные',
                                            readonly=True,
                                            ))
-        for key, value in list_of_data.items():
+        for key, value in self.list_of_data.items():
             record_layout.add_widget(TextInput(hint_text=key,
-                                               id='Добавление - ' + value))
+                                               id=value,
+                                               multiline=False))
         else:
             for button in 'Добавить', 'Удалить', 'Изменить', 'Поиск':
                 record_layout.add_widget(Button(text=button,
@@ -56,21 +69,46 @@ class MyApp(App):
             if box_layout.id == 'record':  # находим рекорд
                 for widget in box_layout.children[5:-1]:
                     key, value = widget.id, widget.text
-                    dict_of_data.update({key[key.find('- ') + 2:]: value})
-                    widget.text = ''  # очистка поля после ввода (подумай, мб очищать только плохие поля, или все если верно)
+                    dict_of_data.update({key: value})
+                    # widget.text = ''  # очистка поля после ввода (подумай, мб очищать только плохие поля, или все если верно)
         return dict_of_data
 
     def add(self):  # ДОБАВЛЕНИЕ (добавить визуала лучше, и проверки !!!!)
-        print(util.add_in_db(**self.get_data_from_inputs()))
+        result = util.add_in_db(**self.get_data_from_inputs())
+        for box_layout in self.main_layout.children:  # цикл на перебор всех макетов (тут нам нужен только рекорд)
+            if box_layout.id == 'record':  # находим рекорд
+                for widget in box_layout.children[5:-1]:
+                    if len(result) == 2:
+                        if widget.id == result[1]:
+                            widget.hint_text, widget.hint_text_color, widget.text = result[0], (1, 0, 0, 1), ''
+                            return
+                    else:
+                        widget.text = ''
+                else:   # тут возврат хинтов сделать
+                    print()
 
     def remove(self):
+        # util.add_in_db(**self.get_data_from_inputs())
         pass
 
     def update(self):
         pass
 
     def search(self):
-        print(util.find_in_db(**self.get_data_from_inputs()))
+        result = util.find_in_db(**self.get_data_from_inputs())
+        for layout in self.main_layout.children:
+            if layout.id == 'find':
+                for name_of_row in 'id', 'first_name', 'last_name', 'patronymic', 'series', 'number_', 'sex', 'whos_give', 'date_of_give':
+                    layout.add_widget(Button(text=name_of_row,
+                                             size_hint_y=None,
+                                             height=50))
+                for row in result:
+                    for cell in row:
+                        layout.add_widget(Button(text=str(cell),
+                                                 size_hint_y=None,
+                                                 height=50))
+
+
 
 
 if __name__ == "__main__":

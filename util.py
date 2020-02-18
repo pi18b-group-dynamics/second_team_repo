@@ -5,37 +5,48 @@ conn = sqlite3.connect('Chinook_Sqlite.sqlite')     # подключение к 
 cursor = conn.cursor()
 
 
-def add_in_db(**kwargs):
+def check_all(**kwargs):
     if any(map(str.isdigit, kwargs.get('first_name'))):
-        return "Введите нормальное ИМЯ"
+        return "Введите нормальное ИМЯ", 'first_name'
     if any(map(str.isdigit, kwargs.get('last_name'))):
-        return "Введите нормальную ФАМИЛИЮ"
+        return "Введите нормальную ФАМИЛИЮ", 'last_name'
     if any(map(str.isdigit, kwargs.get('patronymic'))):
-        return "Введите нормальное ОТЧЕСТВО"
+        return "Введите нормальное ОТЧЕСТВО", 'patronymic'
     if not kwargs.get('number_').isdigit():
-        return "Введите нормальный НОМЕР"
+        return "Введите нормальный НОМЕР", 'number_'
     if any(map(str.isdigit, kwargs.get('sex'))):
-        return "Введите нормальный ПОЛ"
+        return "Введите нормальный ПОЛ", 'sex'
     if any(map(str.isdigit, kwargs.get('whos_give'))):
-        return "Введите нормальное ИЗДАНИЕ"
+        return "Введите нормальное ИЗДАНИЕ", 'whos_give'
     if any(map(str.isalpha, kwargs.get('date_of_give'))):
-        return "Введите нормальный ДАТУ"
-    cursor.execute('INSERT INTO passports (first_name, last_name, patronymic, series, '
-                   'number_, sex, whos_give, date_of_give) VALUES '
-                   '("{}", "{}", "{}", "{}", {}, "{}", "{}", "{}")'.format
-                   (kwargs.get('first_name'), kwargs.get('last_name'), kwargs.get('patronymic'), kwargs.get('series'),
-                    kwargs.get('number_'), kwargs.get('sex'), kwargs.get('whos_give'), kwargs.get('date_of_give')))
-    conn.commit()
+        return "Введите нормальный ДАТУ", 'date_of_give'
+    return True
+
+
+def add_in_db(**kwargs):
+    result = check_all(**kwargs)
+    if result is True:
+        cursor.execute('INSERT INTO passports (first_name, last_name, patronymic, series, '
+                       'number_, sex, whos_give, date_of_give) VALUES '
+                       '("{}", "{}", "{}", "{}", {}, "{}", "{}", "{}")'.format
+                       (kwargs.get('first_name'), kwargs.get('last_name'), kwargs.get('patronymic'), kwargs.get('series'),
+                        kwargs.get('number_'), kwargs.get('sex'), kwargs.get('whos_give'), kwargs.get('date_of_give')))
+        conn.commit()
+        return 'Запись добавлена'
+    else:
+        return result
 
 
 def find_in_db(**kwargs):
     string = 'SELECT * FROM passports WHERE '
+    print(kwargs)
     for key, value in kwargs.items():
-        string += f'{key} = "{value}" AND '
+        if value:
+            string += f'{key} = "{value}" AND '
     else:
         string = string[:string.rfind(' AND ')]     # режем строку так как там появился лишний _AND_
     cursor.execute(string)
-    print(cursor.fetchall())
+    return cursor.fetchall()
 
 
 if __name__ == '__main__':
