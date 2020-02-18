@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="584884ec-c0b9-46f7-86d3-2958ec42b146" name="Default Changelist" comment="">
+    <list default="true" id="584884ec-c0b9-46f7-86d3-2958ec42b146" name="Default Changelist" comment="Наброски интерфейса">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +145,8 @@
       <workItem from="1581053212615" duration="6640000" />
       <workItem from="1581067600744" duration="3473000" />
       <workItem from="1581078997381" duration="672000" />
-      <workItem from="1581887589533" duration="3681000" />
+      <workItem from="1581887589533" duration="6610000" />
+      <workItem from="1582022991034" duration="4037000" />
     </task>
     <task id="LOCAL-00001" summary="Бд которая будет использоватся в проекте - sqlite, по причине:&#10;1) не надо создавать локальный сервер&#10;2) простоты использования&#10;&#10;Создан файл util, для работы с базами данных.">
       <created>1581054766944</created>
@@ -174,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581888011028</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Наброски интерфейса">
+      <created>1581933096421</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581933096421</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,37 +208,54 @@
     <MESSAGE value="Сделана главная таблица." />
     <MESSAGE value="Создана простейшая проверка на ввод." />
     <MESSAGE value="Подключена бд." />
-    <option name="LAST_COMMIT_MESSAGE" value="Подключена бд." />
+    <MESSAGE value="Наброски интерфейса" />
+    <option name="LAST_COMMIT_MESSAGE" value="Наброски интерфейса" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581887880301">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1581887880301" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1581888009981">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1581933328815">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1581888009981" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1581933328815" />
     <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1581059215246">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1581059215246" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1581933063725">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1582027038718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1581933063725" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1581933063725">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582027038718" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1582027038718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1581933063725" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1581933063724">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582027038718" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1582027038718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1581933063724" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1581933063725">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582027038718" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1582027038718">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1581933063725" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582027038718" />
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1582023663534">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582023663534" />
+    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1582023663534">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582023663534" />
+    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1582023663534">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582023663534" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1582023663534">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582023663534" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1581887917376">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -238,10 +264,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1581887770001" />
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1581888022228">
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1581956293863">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1581888022228" />
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1581956293863" />
     <state x="465" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1581078996945">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -252,7 +278,7 @@
     <state x="425" y="85" width="670" height="676" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1581070280207" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lab1$util.coverage" NAME="util Coverage Results" MODIFIED="1581928525289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lab1$main.coverage" NAME="main Coverage Results" MODIFIED="1581933063712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab1$util.coverage" NAME="util Coverage Results" MODIFIED="1582024273146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab1$main.coverage" NAME="main Coverage Results" MODIFIED="1582027038669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
