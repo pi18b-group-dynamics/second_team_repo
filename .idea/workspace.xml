@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="584884ec-c0b9-46f7-86d3-2958ec42b146" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chinook_Sqlite.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/Chinook_Sqlite.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -159,7 +160,7 @@
       <workItem from="1581078997381" duration="672000" />
       <workItem from="1581887589533" duration="6610000" />
       <workItem from="1582022991034" duration="4548000" />
-      <workItem from="1582049769457" duration="7721000" />
+      <workItem from="1582049769457" duration="10595000" />
     </task>
     <task id="LOCAL-00001" summary="Бд которая будет использоватся в проекте - sqlite, по причине:&#10;1) не надо создавать локальный сервер&#10;2) простоты использования&#10;&#10;Создан файл util, для работы с базами данных.">
       <created>1581054766944</created>
@@ -210,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582027535544</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Сделал вывод поиска + пару доп проверок.">
+      <created>1582060606124</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1582060606124</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +246,8 @@
     <MESSAGE value="Наброски интерфейса" />
     <MESSAGE value="Сделал добавление, нужно доделать визуал / проверки" />
     <MESSAGE value="Функционал достающий из инпутов данные перенес в отдельную функцию, которая и возвращает словарь этих данных" />
-    <option name="LAST_COMMIT_MESSAGE" value="Функционал достающий из инпутов данные перенес в отдельную функцию, которая и возвращает словарь этих данных" />
+    <MESSAGE value="Сделал вывод поиска + пару доп проверок." />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал вывод поиска + пару доп проверок." />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="91" key="#SQL_Resolution_Scopes" timestamp="1582058924121">
@@ -249,46 +258,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1581887880301" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1582027529675">
+    <state x="385" y="0" key="CommitChangelistDialog2" timestamp="1582060604827">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1582027529675" />
+    <state x="385" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1582060604827" />
     <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1581059215246">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1581059215246" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1582060565699">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1582063287124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582060565699" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1582060565698">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582063287124" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1582063287124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582060565698" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1582060565698">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582063287124" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1582063287124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582060565698" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1582060565698">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582063287124" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1582063287124">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582060565698" />
-    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1582027548994">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582063287124" />
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1582062955423">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582027548994" />
-    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1582027548992">
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582062955423" />
+    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1582062955423">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582027548992" />
-    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1582027548991">
+    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582062955423" />
+    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1582062955423">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582027548991" />
-    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1582027548993">
+    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582062955423" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1582062955423">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582027548993" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582062955423" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1581887917376">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -297,10 +306,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1581887770001" />
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1582027538848">
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1582060607832">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1582027538848" />
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1582060607832" />
     <state x="465" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1581078996945">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -312,6 +321,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lab1$util.coverage" NAME="util Coverage Results" MODIFIED="1582024273146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lab1$main.coverage" NAME="main Coverage Results" MODIFIED="1582060565684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab1$main.coverage" NAME="main Coverage Results" MODIFIED="1582063287113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

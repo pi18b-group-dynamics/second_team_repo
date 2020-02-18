@@ -1,4 +1,6 @@
 from kivy import Config
+from kivy.uix.image import Image
+
 Config.set('graphics', 'width', 1500)
 from kivy.app import App
 import util
@@ -9,9 +11,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.widget import Widget
 
 
-
 class MyApp(App):
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.main_layout = BoxLayout(orientation='horizontal',)  # создаем главный макет, в котором будут макеты поиска и остальные
@@ -33,7 +33,8 @@ class MyApp(App):
                                id="find",
                                )
         watch_area = BoxLayout(orientation='vertical',
-                               size_hint_x=.3)
+                               size_hint_x=.3,
+                               id="watch")
 
         record_layout.add_widget(TextInput(text='Введите данные',
                                            readonly=True,
@@ -67,7 +68,7 @@ class MyApp(App):
         dict_of_data = {}  # словарь с данными полей, который мы и будем передавать
         for box_layout in self.main_layout.children:  # цикл на перебор всех макетов (тут нам нужен только рекорд)
             if box_layout.id == 'record':  # находим рекорд
-                for widget in box_layout.children[5:-1]:
+                for widget in box_layout.children[4:-1]:
                     key, value = widget.id, widget.text
                     dict_of_data.update({key: value})
                     # widget.text = ''  # очистка поля после ввода (подумай, мб очищать только плохие поля, или все если верно)
@@ -96,19 +97,29 @@ class MyApp(App):
 
     def search(self):
         result = util.find_in_db(**self.get_data_from_inputs())
+        if not result:
+            return
         for layout in self.main_layout.children:
             if layout.id == 'find':
                 for name_of_row in 'id', 'first_name', 'last_name', 'patronymic', 'series', 'number_', 'sex', 'whos_give', 'date_of_give':
                     layout.add_widget(Button(text=name_of_row,
                                              size_hint_y=None,
                                              height=50))
+
                 for row in result:
-                    for cell in row:
+                    id_ = str(row[0])
+                    for cell in row[:-1]:
                         layout.add_widget(Button(text=str(cell),
                                                  size_hint_y=None,
-                                                 height=50))
+                                                 height=50,
+                                                 on_press=self.output_image,
+                                                 id=id_))
 
-
+    def output_image(self, instance):
+        pic = Image(source=util.print_pic(int(instance.id)))
+        for layout in self.main_layout.children:
+            if layout.id == 'watch':
+                layout.add_widget(pic)
 
 
 if __name__ == "__main__":
