@@ -28,7 +28,6 @@ def add_in_db(**kwargs):
     conn.commit()
 
 
-
 def find_in_db(**kwargs):
     string = 'SELECT * FROM passports WHERE '
     for key, value in kwargs.items():
@@ -39,5 +38,6 @@ def find_in_db(**kwargs):
     print(cursor.fetchall())
 
 
-# print(add_in_db('Урод', 'Фамилия', 'Отчество', 'Серия', 'asd', 'Пол', 'Кто выдал', '25.01.2020'))
-print(find_in_db(last_name='Фамилия', first_name='Урод'))
+if __name__ == '__main__':
+    # print(add_in_db('Урод', 'Фамилия', 'Отчество', 'Серия', 'asd', 'Пол', 'Кто выдал', '25.01.2020'))
+    print(find_in_db(last_name='Фамилия', first_name='Урод'))

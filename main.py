@@ -11,7 +11,7 @@ class MyApp(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.main_layout = BoxLayout(orientation='horizontal')
+        self.main_layout = BoxLayout(orientation='horizontal')  # создаем главный макет, в котором будут макеты поиска и остальные
 
     def build(self):
 
@@ -30,7 +30,7 @@ class MyApp(App):
             record_layout.add_widget(TextInput(hint_text=key,
                                                id='Добавление - ' + value))
         else:
-            for button in 'Добавить', 'Удалить', 'Изменить', 'Найти':
+            for button in 'Добавить', 'Удалить', 'Изменить', 'Поиск':
                 record_layout.add_widget(Button(text=button,
                                                 on_press=self.work_with_db))
 
@@ -49,17 +49,19 @@ class MyApp(App):
         elif instance.text == 'Поиск':
             self.search()
 
-    def add(self):  # ДОБАВЛЕНИЕ (добавить визуала лучше, и проверки !!!!)
+    def get_data_from_inputs(self):     # функция которая достает словарь или json объект из input'ов
         # след. цикл и вообще конструкция - добираемся до input'ов
-        dict_of_data = {}   # словарь с данными полей, который мы и будем передавать
-        for box_layout in self.main_layout.children:    # цикл на перебор всех макетов (тут нам нужен только рекорд)
-            if box_layout.id == 'record':   # находим рекорд
+        dict_of_data = {}  # словарь с данными полей, который мы и будем передавать
+        for box_layout in self.main_layout.children:  # цикл на перебор всех макетов (тут нам нужен только рекорд)
+            if box_layout.id == 'record':  # находим рекорд
                 for widget in box_layout.children[5:-1]:
                     key, value = widget.id, widget.text
                     dict_of_data.update({key[key.find('- ') + 2:]: value})
-                    widget.text = ''    # очистка поля после ввода (подумай, мб очищать только плохие поля, или все если верно)
+                    widget.text = ''  # очистка поля после ввода (подумай, мб очищать только плохие поля, или все если верно)
+        return dict_of_data
 
-        print(util.add_in_db(**dict_of_data))
+    def add(self):  # ДОБАВЛЕНИЕ (добавить визуала лучше, и проверки !!!!)
+        print(util.add_in_db(**self.get_data_from_inputs()))
 
     def remove(self):
         pass
@@ -68,8 +70,7 @@ class MyApp(App):
         pass
 
     def search(self):
-        util.find_in_db()
-
+        print(util.find_in_db(**self.get_data_from_inputs()))
 
 
 if __name__ == "__main__":
