@@ -1,7 +1,7 @@
 from kivy import Config
 from kivy.uix.image import Image
-
 Config.set('graphics', 'width', 1500)
+# Config.set('graphics', 'width', 1500)     # сделать окно неизменяемым
 from kivy.app import App
 import util
 from kivy.uix.boxlayout import BoxLayout
@@ -14,6 +14,7 @@ from kivy.uix.widget import Widget
 class MyApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.title = 'Система паспортного учета'
         self.main_layout = BoxLayout(orientation='horizontal',)  # создаем главный макет, в котором будут макеты поиска и остальные
         self.list_of_data = {'Введите фамилию': 'last_name',    # словарь с данными кнопошек
                              'Введите имя': 'first_name',
@@ -38,6 +39,7 @@ class MyApp(App):
 
         record_layout.add_widget(TextInput(text='Введите данные',
                                            readonly=True,
+                                           foreground_color=(1, 0, 0, 1)
                                            ))
         for key, value in self.list_of_data.items():
             record_layout.add_widget(TextInput(hint_text=key,
@@ -101,12 +103,13 @@ class MyApp(App):
             return
         for layout in self.main_layout.children:
             if layout.id == 'find':
-                for name_of_row in 'id', 'first_name', 'last_name', 'patronymic', 'series', 'number_', 'sex', 'whos_give', 'date_of_give':
+                layout.clear_widgets()
+                for name_of_row in 'id', 'Имя', 'Фамилия', 'Отчество', 'Серия', 'Номер', 'Пол', 'Кто выдал', 'Дата выдачи':  # вывод кнопок
                     layout.add_widget(Button(text=name_of_row,
                                              size_hint_y=None,
                                              height=50))
 
-                for row in result:
+                for row in result:  # печать результата поиска
                     id_ = str(row[0])
                     for cell in row[:-1]:
                         layout.add_widget(Button(text=str(cell),
@@ -118,8 +121,17 @@ class MyApp(App):
     def output_image(self, instance):
         pic = Image(source=util.print_pic(int(instance.id)))
         for layout in self.main_layout.children:
+            if layout.id == 'find':
+                for button in layout.children:
+                    if button.id == instance.id:
+                        button.background_color = (1, 0, 0, 1)
+                    else:
+                        button.background_color = (1, 1, 1, 1)
             if layout.id == 'watch':
+                layout.clear_widgets()
                 layout.add_widget(pic)
+                layout.add_widget(Button(text='Фотография пользователя',
+                                         size_hint_y=.2))
 
 
 if __name__ == "__main__":
