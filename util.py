@@ -6,19 +6,19 @@ cursor = conn.cursor()
 
 
 def check_all(**kwargs):
-    if any(map(str.isdigit, kwargs.get('first_name'))):
+    if not kwargs.get('first_name') or any(map(str.isdigit, kwargs.get('first_name'))):
         return "Введите нормальное ИМЯ", 'first_name'
-    if any(map(str.isdigit, kwargs.get('last_name'))):
+    if not kwargs.get('last_name') or any(map(str.isdigit, kwargs.get('last_name'))):
         return "Введите нормальную ФАМИЛИЮ", 'last_name'
-    if any(map(str.isdigit, kwargs.get('patronymic'))):
+    if not kwargs.get('patronymic') or any(map(str.isdigit, kwargs.get('patronymic'))):
         return "Введите нормальное ОТЧЕСТВО", 'patronymic'
     if not kwargs.get('number_').isdigit():
         return "Введите нормальный НОМЕР", 'number_'
-    if any(map(str.isdigit, kwargs.get('sex'))):
+    if not kwargs.get('sex') or any(map(str.isdigit, kwargs.get('sex'))):
         return "Введите нормальный ПОЛ", 'sex'
-    if any(map(str.isdigit, kwargs.get('whos_give'))):
+    if not kwargs.get('whos_give') or any(map(str.isdigit, kwargs.get('whos_give'))):
         return "Введите нормальное ИЗДАНИЕ", 'whos_give'
-    if any(map(str.isalpha, kwargs.get('date_of_give'))):
+    if not kwargs.get('date_of_give') or any(map(str.isalpha, kwargs.get('date_of_give'))):
         return "Введите нормальный ДАТУ", 'date_of_give'
     return True
 

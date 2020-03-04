@@ -1,7 +1,7 @@
 from kivy import Config
 from kivy.uix.image import Image
 Config.set('graphics', 'width', 1500)
-# Config.set('graphics', 'width', 1500)     # сделать окно неизменяемым
+# Config.set('graphics', 'resizeable', 0)     # сделать окно неизменяемым
 from kivy.app import App
 import util
 from kivy.uix.boxlayout import BoxLayout
