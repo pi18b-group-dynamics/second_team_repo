@@ -118,3 +118,7 @@ def check_on_of_all(kwargs):
         except:
             return False
     return True
+
+
+def print_all():
+    return cursor.execute('SELECT * FROM passports').fetchall()

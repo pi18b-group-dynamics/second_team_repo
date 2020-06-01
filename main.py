@@ -1,5 +1,8 @@
 from kivy import Config
 from kivy.uix.image import Image
+
+import pdf
+
 Config.set('graphics', 'width', 1500)
 Config.set('graphics', 'height', 800)
 # Config.set('graphics', 'resizeable', 0)     # сделать окно неизменяемым
@@ -52,7 +55,7 @@ class MyApp(App):
                                                id=value,
                                                multiline=False))
         else:
-            for button in 'Добавить', 'Удалить', 'Изменить', 'Поиск':
+            for button in 'Добавить', 'Удалить', 'Изменить', 'Поиск', 'Вывод в pdf':
                 record_layout.add_widget(Button(text=button,
                                                 on_press=self.work_with_db))
 
@@ -70,6 +73,8 @@ class MyApp(App):
             self.watcher.text = self.update()
         elif instance.text == 'Поиск':
             self.search()
+        else:
+            pdf.simple_table(data=util.print_all())
 
     def get_data_from_inputs(self):     # функция которая достает словарь или json объект из input'ов
         # след. цикл и вообще конструкция - добираемся до input'ов
