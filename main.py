@@ -1,6 +1,7 @@
 from kivy import Config
 from kivy.uix.image import Image
 Config.set('graphics', 'width', 1500)
+Config.set('graphics', 'height', 800)
 # Config.set('graphics', 'resizeable', 0)     # сделать окно неизменяемым
 from kivy.app import App
 import util
@@ -12,6 +13,10 @@ from kivy.uix.widget import Widget
 
 
 class MyApp(App):
+
+    dict_of_update = {}
+    watcher = None
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.title = 'Система паспортного учета'
@@ -37,10 +42,11 @@ class MyApp(App):
                                size_hint_x=.3,
                                id="watch")
 
-        record_layout.add_widget(TextInput(text='Введите данные',
-                                           readonly=True,
-                                           foreground_color=(1, 0, 0, 1)
-                                           ))
+        self.watcher = TextInput(text='Введите данные',
+                                 readonly=True,
+                                 foreground_color=(1, 0, 0, 1)
+                                 )
+        record_layout.add_widget(self.watcher)
         for key, value in self.list_of_data.items():
             record_layout.add_widget(TextInput(hint_text=key,
                                                id=value,
@@ -61,7 +67,7 @@ class MyApp(App):
         elif instance.text == 'Удалить':
             self.remove()
         elif instance.text == 'Изменить':
-            self.update()
+            self.watcher.text = self.update()
         elif instance.text == 'Поиск':
             self.search()
 
@@ -91,10 +97,25 @@ class MyApp(App):
                     print()
 
     def remove(self):
-        util.remove_from_db(self.get_data_from_inputs())
+        self.watcher.text = util.remove_from_db(self.get_data_from_inputs())
 
     def update(self):
-        pass
+        if len(tuple(1 for x in self.get_data_from_inputs().values() if x)) == 0:
+            if len(self.dict_of_update) == 0:
+                return 'Введите данные человека которого хотите изменить'
+            else:
+                return 'Введите данные человека которые хотите изменить'
+        if len(self.dict_of_update) == 0:
+            if util.check_in_db(self.get_data_from_inputs()):
+                self.dict_of_update = self.get_data_from_inputs()
+                return 'Введите новые данные для человека:'
+            else:
+                return 'Паспорт не найден'
+        else:
+            if util.check_on_of_all(self.get_data_from_inputs()):
+                return 'Пользователь изменен'
+            else:
+                return 'Пользователь не изменен, ошибка в данных'
 
     def search(self):
         result = util.find_in_db(**self.get_data_from_inputs())

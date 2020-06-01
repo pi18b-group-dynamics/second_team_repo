@@ -1,3 +1,5 @@
+import datetime
+import re
 import sqlite3
 
 
@@ -18,7 +20,9 @@ def check_all(**kwargs):
         return "Введите нормальный ПОЛ", 'sex'
     if not kwargs.get('whos_give') or any(map(str.isdigit, kwargs.get('whos_give'))):
         return "Введите нормальное ИЗДАНИЕ", 'whos_give'
-    if not kwargs.get('date_of_give') or any(map(str.isalpha, kwargs.get('date_of_give'))):
+    try:
+        datetime.datetime.strptime(kwargs.get('date_of_give'), '%d.%m.%Y')
+    except:
         return "Введите нормальный ДАТУ", 'date_of_give'
     return True
 
@@ -28,7 +32,7 @@ def add_in_db(**kwargs):
     if result is True:
         cursor.execute('INSERT INTO passports (first_name, last_name, patronymic, series, '
                        'number_, sex, whos_give, date_of_give, photo) VALUES '
-                       '("{}", "{}", "{}", "{}", {}, "{}", "{}", "{}")'.format
+                       '("{}", "{}", "{}", "{}", {}, "{}", "{}", "{}", "{}")'.format
                        (kwargs.get('first_name'), kwargs.get('last_name'), kwargs.get('patronymic'), kwargs.get('series'),
                         kwargs.get('number_'), kwargs.get('sex'), kwargs.get('whos_give'), kwargs.get('date_of_give'), kwargs.get('photo')))
         conn.commit()
@@ -65,7 +69,9 @@ def remove_from_db(data):
     :param data: данные которые ввел пользователь
     :return:
     """
-    query = 'DELETE FROM passport WHERE '
+    if len(data) == 0:
+        return 'Удаление не произошло'
+    query = 'DELETE FROM passports WHERE '
     for field, value in data.items():
         if value:
             query += field + ' = "' + value + '" AND '
@@ -73,3 +79,42 @@ def remove_from_db(data):
         query = query[:-4]
     cursor.execute(query)
     conn.commit()
+    return 'Удаление успешно'
+
+
+def check_in_db(data):
+    """
+        Прозводим проверку человека, есть ли он в базе,(для изменения данных человека)
+        :param data: данные которые ввел пользователь
+        :return:
+    """
+    query = 'SELECT * ' \
+            'FROM passports ' \
+            'WHERE '
+    for field, value in data.items():
+        if value:
+            query += field + ' = "' + value + '" AND '
+    else:
+        query = query[:-4]
+    return bool(cursor.execute(query).fetchall())
+
+
+def check_on_of_all(kwargs):
+    if kwargs.get('first_name') or any(map(str.isdigit, kwargs.get('first_name'))):
+        return False
+    if kwargs.get('last_name') or any(map(str.isdigit, kwargs.get('last_name'))):
+        return False
+    if kwargs.get('patronymic') or any(map(str.isdigit, kwargs.get('patronymic'))):
+        return False
+    if kwargs.get('number_').isdigit():
+        return False
+    if kwargs.get('sex') or any(map(str.isdigit, kwargs.get('sex'))):
+        return False
+    if kwargs.get('whos_give') or any(map(str.isdigit, kwargs.get('whos_give'))):
+        return False
+    if kwargs.get('date_of_give'):
+        try:
+            datetime.datetime.strptime(kwargs.get('date_of_give'), '%d.%m.%Y')
+        except:
+            return False
+    return True
