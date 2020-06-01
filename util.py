@@ -69,7 +69,7 @@ def remove_from_db(data):
     :param data: данные которые ввел пользователь
     :return:
     """
-    if len(data) == 0:
+    if len(data) != 9:
         return 'Удаление не произошло'
     query = 'DELETE FROM passports WHERE '
     for field, value in data.items():

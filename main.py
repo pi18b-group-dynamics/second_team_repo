@@ -1,18 +1,14 @@
 from kivy import Config
 from kivy.uix.image import Image
-
 import pdf
-
 Config.set('graphics', 'width', 1500)
 Config.set('graphics', 'height', 800)
-# Config.set('graphics', 'resizeable', 0)     # сделать окно неизменяемым
 from kivy.app import App
 import util
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
-from kivy.uix.widget import Widget
 
 
 class MyApp(App):

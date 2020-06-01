@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="584884ec-c0b9-46f7-86d3-2958ec42b146" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chinook_Sqlite.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/Chinook_Sqlite.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_table.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/simple_table.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +174,7 @@
       <workItem from="1587461961000" duration="1790000" />
       <workItem from="1591021815417" duration="3564000" />
       <workItem from="1591045258308" duration="2000" />
-      <workItem from="1591046978672" duration="5649000" />
+      <workItem from="1591046978672" duration="5897000" />
     </task>
     <task id="LOCAL-00001" summary="Бд которая будет использоватся в проекте - sqlite, по причине:&#10;1) не надо создавать локальный сервер&#10;2) простоты использования&#10;&#10;Создан файл util, для работы с базами данных.">
       <created>1581054766944</created>
@@ -277,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591052087818</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Сделана выгрузка в PDF">
+      <created>1591052831574</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1591052831574</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,17 +315,18 @@
     <MESSAGE value="Удаление старой невалидной документации." />
     <MESSAGE value="Добавлено удаление, + готовится запись в пдф." />
     <MESSAGE value="Сделано изменение, удаление, и проверено это же." />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделано изменение, удаление, и проверено это же." />
+    <MESSAGE value="Сделана выгрузка в PDF" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделана выгрузка в PDF" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587461982481">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1587461982481" />
-    <state x="385" y="0" key="CommitChangelistDialog2" timestamp="1591052086841">
+    <state x="385" y="0" key="CommitChangelistDialog2" timestamp="1591052830647">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="385" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1591052086841" />
+    <state x="385" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1591052830647" />
     <state x="139" y="69" key="DiffContextDialog" timestamp="1583338915376">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -362,10 +367,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1587462072014" />
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1591052163717">
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1591052833292">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1591052163717" />
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1591052833292" />
     <state x="465" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1583338860110">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -378,11 +383,6 @@
           <url>file://$PROJECT_DIR$/util.py</url>
           <line>31</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/util.py</url>
-          <line>71</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
