@@ -56,4 +56,20 @@ def print_pic(id):
 
 if __name__ == '__main__':
     # print(add_in_db('Урод', 'Фамилия', 'Отчество', 'Серия', 'asd', 'Пол', 'Кто выдал', '25.01.2020'))
-    print(find_in_db(last_name='Фамилия', first_name='Урод'))
+    pass
+
+
+def remove_from_db(data):
+    """
+        Удаление из бд,
+    :param data: данные которые ввел пользователь
+    :return:
+    """
+    query = 'DELETE FROM passport WHERE '
+    for field, value in data.items():
+        if value:
+            query += field + ' = "' + value + '" AND '
+    else:
+        query = query[:-4]
+    cursor.execute(query)
+    conn.commit()

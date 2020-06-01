@@ -91,8 +91,7 @@ class MyApp(App):
                     print()
 
     def remove(self):
-        # util.add_in_db(**self.get_data_from_inputs())
-        pass
+        util.remove_from_db(self.get_data_from_inputs())
 
     def update(self):
         pass
